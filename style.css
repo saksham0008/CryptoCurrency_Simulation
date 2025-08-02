@@ -1,0 +1,649 @@
+body {
+  margin: 0;
+  padding: 0;
+  font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+  background: linear-gradient(to right, #1f1c2c, #928dab);
+  color: #fff;
+  min-height: 100vh;
+  display: flex;
+  flex-direction: column;
+}
+
+.navbar {
+  background-color: rgba(0, 0, 0, 0.7);
+  padding: 20px;
+  text-align: center;
+  box-shadow: 0 4px 10px rgba(0, 0, 0, 0.3);
+}
+
+.navbar h1 {
+  margin: 0;
+  font-size: 2.2em;
+  color: #f1f1f1;
+}
+
+.nav-tabs {
+  list-style: none;
+  padding: 0;
+  display: flex;
+  justify-content: center;
+  margin-top: 15px;
+  gap: 20px;
+}
+
+.nav-tabs .tab-link {
+  cursor: pointer;
+  padding: 10px 20px;
+  border-radius: 5px;
+  background: #333;
+  transition: background 0.3s ease;
+}
+
+.nav-tabs .tab-link:hover,
+.nav-tabs .tab-link.active {
+  background: #0f9d58;
+}
+
+.tab-content {
+  flex-grow: 1;
+  padding: 30px;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  gap: 30px;
+}
+
+.tab-pane {
+  display: none;
+  max-width: 700px;
+  width: 100%;
+  background: rgba(255, 255, 255, 0.05);
+  padding: 25px;
+  border-radius: 10px;
+  box-shadow: 0 0 15px rgba(0, 0, 0, 0.2);
+}
+
+.tab-pane.active {
+  display: block;
+  animation: fadeIn 0.5s ease-in;
+}
+
+@keyframes fadeIn {
+  from { opacity: 0; transform: translateY(10px); }
+  to { opacity: 1; transform: translateY(0); }
+}
+
+input, button {
+  width: 100%;
+  padding: 12px;
+  margin: 10px 0;
+  border: none;
+  border-radius: 5px;
+  font-size: 1em;
+}
+
+input {
+  background: rgba(255, 255, 255, 0.1);
+  color: #fff;
+}
+
+button {
+  background: #0f9d58;
+  color: #fff;
+  cursor: pointer;
+  transition: background 0.3s;
+}
+
+button:hover {
+  background: #0c7a43;
+}
+
+#balanceList, #blockchainView, #transactionList {
+  width: 100%;
+  overflow-x: auto;
+  white-space: pre-wrap;
+  background: rgba(0, 0, 0, 0.2);
+  padding: 15px;
+  border-radius: 5px;
+  font-size: 0.9em;
+}
+
+footer {
+  padding: 20px;
+  text-align: center;
+  background: #111;
+  color: #aaa;
+  font-size: 0.85em;
+}
+
+@media screen and (max-width: 768px) {
+  .nav-tabs {
+    flex-direction: column;
+    align-items: center;
+  }
+
+  .tab-content {
+    padding: 15px;
+  }
+
+  input, button {
+    font-size: 0.95em;
+  }
+}
+
+/* Toastify glass-style notification */
+/* Only blur Toastify toasts in dark mode */
+body.dark-mode .toastify .glass-toast {
+  background: rgba(255, 255, 255, 0.1);
+  color: #fff;
+  backdrop-filter: blur(10px);
+  -webkit-backdrop-filter: blur(10px);
+  border: 1px solid rgba(255, 255, 255, 0.25);
+  box-shadow: 0 8px 32px rgba(0, 0, 0, 0.2);
+  border-radius: 8px;
+  padding: 10px;
+}
+
+/* No blur in light mode */
+body.light-mode .toastify .glass-toast {
+  background: rgba(255, 255, 255, 0.9); /* clean light */
+  color: #222;
+  border: 1px solid #ccc;
+  box-shadow: 0 4px 16px rgba(0,0,0,0.1);
+}
+
+
+body.light-mode {
+  background-color: #f4f4f4;
+  color: #222;
+}
+
+body.dark-mode {
+  background-color: #121212;
+  color: #f0f0f0;
+}
+
+#themeToggle {
+  position: fixed;
+  top: 10px;
+  right: 10px;
+  background: transparent;
+  border: none;
+  font-size: 24px;
+  cursor: pointer;
+  z-index: 9999;
+}
+
+#themeToggle:hover {
+  opacity: 0.8;
+}
+
+.emoji-switch {
+  position: fixed;
+  top: 10px;
+  left: 10px;
+  z-index: 9999;
+  width: 50px;
+  height: 28px;
+  display: inline-block;
+}
+
+.emoji-switch input {
+  opacity: 0;
+  width: 0;
+  height: 0;
+}
+
+.emoji-slider {
+  position: absolute;
+  cursor: pointer;
+  top: 0;
+  left: 0;
+  right: 0;
+  bottom: 0;
+  background-color: transparent;
+  border: 2px solid #ccc;
+  border-radius: 30px;
+  transition: 0.4s;
+  font-size: 18px;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+}
+
+.emoji-switch input:checked + .emoji-slider {
+  background-color: transparent;
+}
+
+.emoji-slider::after {
+  content: "🌞";
+  transition: 0.4s;
+}
+
+.emoji-switch input:checked + .emoji-slider::after {
+  content: "🌙";
+}
+
+body.light-mode {
+  background: linear-gradient(135deg, #e6e9ef, #c9d4e0);
+  color: #222;
+}
+
+body.dark-mode {
+  background: linear-gradient(135deg, #1f1f2f, #111122);
+  color: #f0f0f0;
+}
+
+.glass-container {
+  backdrop-filter: blur(30px);
+  -webkit-backdrop-filter: blur(20px);
+  background: rgba(255, 255, 255, 0.05);
+  border-radius: 12px;
+  padding: 20px;
+  margin: 20px;
+  box-shadow: 0 8px 32px rgba(0, 0, 0, 0.2);
+}
+
+body::before {
+  content: "";
+  position: fixed;
+  top: 0; left: 0; width: 100%; height: 100%;
+  background: radial-gradient(circle at 20% 20%, rgba(255,255,255,0.05), transparent 40%),
+              radial-gradient(circle at 80% 80%, rgba(255,255,255,0.05), transparent 40%);
+  z-index: -1;
+  animation: floatBackground 20s infinite alternate;
+}
+
+@keyframes floatBackground {
+  0%   { background-position: 20% 20%, 80% 80%; }
+  100% { background-position: 25% 15%, 75% 85%; }
+}
+
+body {
+  background: linear-gradient(-45deg, #1f1c2c, #928dab, #2c3e50, #3498db);
+  background-size: 400% 400%;
+  animation: gradientFlow 20s ease infinite;
+}
+
+@keyframes gradientFlow {
+  0%   { background-position: 0% 50%; }
+  50%  { background-position: 100% 50%; }
+  100% { background-position: 0% 50%; }
+}
+
+/* ------------------------ */
+/* Auth (Login/Signup) Page */
+/* ------------------------ */
+
+
+.auth-container {
+  height: 100vh;
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  align-items: center;
+  background: linear-gradient(-45deg, #1f1c2c, #928dab, #2c3e50, #3498db);
+  background-size: 400% 400%;
+  animation: gradientFlow 20s ease infinite;
+}
+
+.auth-container h1 {
+  font-size: 2.5rem;
+  color: #fff;
+  margin-bottom: 20px;
+  text-shadow: 0 4px 10px rgba(0,0,0,0.5);
+}
+
+.auth-forms {
+  display: flex;
+  gap: 40px;
+}
+
+.auth-forms form {
+  backdrop-filter: blur(20px);
+  -webkit-backdrop-filter: blur(20px);
+  background: rgba(255, 255, 255, 0.05);
+  padding: 30px;
+  border-radius: 15px;
+  box-shadow: 0 8px 32px rgba(0, 0, 0, 0.3);
+  display: flex;
+  flex-direction: column;
+  width: 250px;
+}
+
+.auth-forms h2 {
+  text-align: center;
+  margin-bottom: 20px;
+  color: #f0f0f0;
+}
+
+.auth-forms input {
+  margin: 10px 0;
+  padding: 12px;
+  border-radius: 8px;
+  border: none;
+  background: rgba(255, 255, 255, 0.1);
+  color: #fff;
+  font-size: 1em;
+}
+
+.auth-forms input::placeholder {
+  color: #ccc;
+}
+
+.auth-forms button {
+  padding: 12px;
+  background: #0f9d58;
+  color: #fff;
+  border: none;
+  border-radius: 8px;
+  cursor: pointer;
+  transition: background 0.3s;
+}
+
+.auth-forms button:hover {
+  background: #0c7a43;
+}
+
+@media screen and (max-width: 768px) {
+  .auth-forms {
+    flex-direction: column;
+    align-items: center;
+  }
+
+  .auth-forms form {
+    width: 80%;
+  }
+}
+
+.blockchain-grid {
+    display: flex;
+    flex-wrap: wrap;
+    gap: 20px;
+    justify-content: center;
+  }
+
+#blockchainView {
+  display: flex;
+  overflow-x: auto;
+  flex-wrap: nowrap;
+  justify-content: flex-start;
+  gap: 20px;
+  padding: 10px;
+  white-space: nowrap;
+  scroll-snap-type: x mandatory;
+  scroll-behavior: smooth;
+}
+
+.block-card {
+  flex: 0 0 auto;
+  width: 220px;
+  border-radius: 10px;
+  padding: 15px;
+  transition: transform 0.5s ease;
+  flex-shrink: 0;
+}
+
+.block-card:hover {
+  background: rgba(7, 116, 241, 0.05);
+  transform: translateY(-5px);
+}
+
+/* Modal Overlay */
+.modal-overlay {
+  display: none;
+  position: fixed;
+  inset: 0;
+  background: rgba(0, 0, 0, 0.7);
+  justify-content: center;
+  align-items: center;
+  z-index: 9999;
+}
+
+.modal-content {
+  background: #222;
+  color: #fff;
+  border-radius: 10px;
+  padding: 20px;
+  width: 80%;
+  max-width: 600px;
+  transition: transform 0.3s ease, opacity 0.3s ease;
+}
+
+.slide-left {
+  animation: slideLeft 0.3s forwards;
+}
+
+.slide-right {
+  animation: slideRight 0.3s forwards;
+}
+
+@keyframes slideLeft {
+  from { transform: translateX(50px); opacity: 0; }
+  to   { transform: translateX(0); opacity: 1; }
+}
+
+@keyframes slideRight {
+  from { transform: translateX(-50px); opacity: 0; }
+  to   { transform: translateX(0); opacity: 1; }
+}
+
+.block-card {
+  display: inline-block;
+  width: 200px;
+  padding: 15px;
+  margin: 10px;
+  background: rgba(255, 255, 255, 0.05);
+  border-radius: 10px;
+  cursor: pointer;
+  transition: transform 0.2s;
+}
+.block-card:hover {
+  transform: scale(1.05);
+}
+
+.close-btn {
+  cursor: pointer;
+  font-size: 24px;
+  float: right;
+}
+
+.modal-nav {
+  display: flex;
+  justify-content: space-between;
+  margin-top: 20px;
+}
+
+.modal-nav button {
+  background-color: #0f9d58;
+  border: none;
+  padding: 10px 20px;
+  border-radius: 8px;
+  cursor: pointer;
+  font-size: 16px;
+  color: #fff;
+  transition: background 0.3s;
+}
+
+.modal-nav button:hover {
+  background-color: #0c7a43;
+}
+
+.txn {
+    background: rgba(0, 0, 0, 0.2);
+    padding: 5px 10px;
+    border-radius: 8px;
+    margin-top: 5px;
+    font-size: 0.9em;
+}
+
+.logout-card {
+  margin: 20px auto;
+  padding: 15px 30px;
+  width: fit-content;
+  background: rgba(255, 255, 255, 0.05);
+  border-radius: 12px;
+  backdrop-filter: blur(15px);
+  -webkit-backdrop-filter: blur(15px);
+  box-shadow: 0 8px 24px rgba(0, 0, 0, 0.2);
+  text-align: center;
+}
+
+.logout-btn {
+  color: #fff;
+  padding: 10px 20px;
+  border-radius: 8px;
+  text-decoration: none;
+  font-weight: bold;
+  transition: background 0.3s ease;
+}
+
+.block-explorer-glass {
+  position: relative;
+  padding: 20px;
+  background: rgba(255, 255, 255, 0.05);
+  backdrop-filter: blur(20px);
+  border-radius: 15px;
+  margin: 20px;
+}
+
+.block-explorer-container {
+  position: relative;
+  overflow: hidden;
+}
+
+.blockchain-scroll {
+  display: flex;
+  flex-wrap: nowrap;
+  gap: 20px;
+  scroll-behavior: smooth;
+  padding: 10px 60px; /* extra space for arrows inside */
+}
+
+.block-card {
+  min-width: 220px;
+  flex-shrink: 0;
+  background: rgba(255, 255, 255, 0.05);
+  padding: 15px;
+  border-radius: 10px;
+  box-shadow: 0 2px 10px rgba(0,0,0,0.3);
+  cursor: pointer;
+  transition: transform 0.2s ease, background 0.3s ease;
+}
+
+.block-card:hover {
+  background: rgba(255, 255, 255, 0.1);
+  transform: translateY(-5px);
+}
+
+.arrow-btn {
+  position: absolute;
+  top: 50%;
+  transform: translateY(-50%);
+  font-size: 2rem;
+  background: rgba(255, 255, 255, 0.05);
+  backdrop-filter: blur(10px);
+  padding: 10px 12px;
+  border-radius: 50%;
+  color: #fff;
+  cursor: pointer;
+  opacity: 0.4;
+  transition: opacity 0.3s ease, box-shadow 0.3s ease;
+  z-index: 2;
+  user-select: none;
+}
+
+.arrow-btn:hover {
+  opacity: 1;
+  box-shadow: 0 0 10px rgba(255, 255, 255, 0.4);
+}
+
+.left-arrow {
+  left: 10px;
+}
+
+.right-arrow {
+  right: 10px;
+}
+
+/* ---------------- LIGHT MODE FIX OVERRIDES ---------------- */
+body.light-mode {
+  background: linear-gradient(135deg, #e6e9ef, #c9d4e0) !important;
+  color: #222 !important;
+}
+
+body.light-mode .navbar {
+  background-color: rgba(255, 255, 255, 0.8);
+  box-shadow: 0 4px 10px rgba(0, 0, 0, 0.1);
+}
+
+body.light-mode .navbar h1 {
+  color: #333;
+}
+
+body.light-mode .nav-tabs .tab-link {
+  background: #e0e0e0;
+  color: #333;
+}
+
+body.light-mode .nav-tabs .tab-link.active {
+  background: #0f9d58;
+  color: #fff;
+}
+
+body.light-mode .tab-pane {
+  background: rgba(255, 255, 255, 0.8);
+  color: #222;
+}
+
+body.light-mode input {
+  background: rgba(0, 0, 0, 0.05);
+  color: #222;
+}
+
+body.light-mode button {
+  background: #0f9d58;
+  color: #fff;
+}
+
+body.light-mode #balanceList,
+body.light-mode #blockchainView,
+body.light-mode #transactionList {
+  background: rgba(255, 255, 255, 0.6);
+  color: #222;
+}
+
+body.light-mode .block-card {
+  background: rgba(255, 255, 255, 0.9);
+  box-shadow: 0 2px 10px rgba(0,0,0,0.1);
+  color: #222;
+}
+
+body.light-mode .block-card:hover {
+  background: rgba(0, 0, 0, 0.05);
+}
+
+body.light-mode .logout-card {
+  background: rgba(255, 255, 255, 0.7);
+  color: #222;
+}
+
+body.light-mode .logout-btn {
+  color: #222;
+  background: rgba(0,0,0,0.05);
+}
+
+body.light-mode .arrow-btn {
+  background: rgba(0, 0, 0, 0.05);
+  color: #333;
+}
+
+body.light-mode .modal-content {
+  background: rgba(255, 255, 255, 0.95);
+  color: #222;
+}
+
+body.light-mode .txn {
+  background: rgba(0, 0, 0, 0.05);
+  color: #222;
+}
