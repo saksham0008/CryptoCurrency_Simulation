@@ -97,8 +97,10 @@ python app.py
 http://localhost:5000
 
 Author
+
 Saksham Gupta
 
 License
+
 This project is licensed for educational purposes.
 
