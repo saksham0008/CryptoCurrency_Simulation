@@ -96,3 +96,9 @@ python app.py
 4. Open in Browser:
 http://localhost:5000
 
+Author
+Saksham Gupta
+
+License
+This project is licensed for educational purposes.
+
