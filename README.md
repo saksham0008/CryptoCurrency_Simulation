@@ -1,5 +1,15 @@
 # CryptoCurrency Simulation
 
+![Python](https://img.shields.io/badge/Python-3.13-blue)
+
+![Flask](https://img.shields.io/badge/Flask-Web%20App-black)
+
+![Machine Learning](https://img.shields.io/badge/Machine%20Learning-Scikit--Learn-orange)
+
+![OpenAI](https://img.shields.io/badge/Generative%20AI-OpenAI-green)
+
+![Render](https://img.shields.io/badge/Deployment-Render-purple)
+
 A full-stack cryptocurrency and blockchain simulation developed using **Python**, **Flask**, **ECDSA Cryptography**, **Machine Learning**, and **Generative AI**.
 
 The project demonstrates the complete lifecycle of blockchain transactions—from wallet generation and digital signatures to Proof-of-Work mining, fraud detection using Machine Learning, and AI-powered blockchain explanations.
