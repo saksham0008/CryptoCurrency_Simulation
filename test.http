@@ -1,0 +1,149 @@
+# =============================================================
+#  CryptoCurrency Simulation — REST Client Tests
+#  VS Code REST Client Extension
+#  Run each block individually with "Send Request"
+# =============================================================
+
+# -------------------------------------------------------------------
+# STEP 1 — Create two wallets (run each, copy the returned addresses)
+# -------------------------------------------------------------------
+
+### Create Wallet A
+POST http://127.0.0.1:5000/api/cryptosim/create_wallet
+Content-Type: application/json
+
+###
+
+### Create Wallet B
+POST http://127.0.0.1:5000/api/cryptosim/create_wallet
+Content-Type: application/json
+
+###
+
+# -------------------------------------------------------------------
+# STEP 2 — Send a transaction
+#   Replace <WALLET_A_ADDRESS> and <WALLET_B_ADDRESS>
+#   with the addresses returned above.
+# -------------------------------------------------------------------
+
+### Send Transaction (normal amount)
+POST http://127.0.0.1:5000/api/cryptosim/send_transaction
+Content-Type: application/json
+
+{
+  "sender":    "<WALLET_A_ADDRESS>",
+  "recipient": "<WALLET_B_ADDRESS>",
+  "amount":    5
+}
+
+###
+
+### Send Transaction (large amount – may trigger fraud flag)
+POST http://127.0.0.1:5000/api/cryptosim/send_transaction
+Content-Type: application/json
+
+{
+  "sender":    "<WALLET_A_ADDRESS>",
+  "recipient": "<WALLET_B_ADDRESS>",
+  "amount":    99999
+}
+
+###
+
+# -------------------------------------------------------------------
+# STEP 3 — Mine a block
+# -------------------------------------------------------------------
+
+### Mine Block
+POST http://127.0.0.1:5000/api/cryptosim/mine
+Content-Type: application/json
+
+{
+  "miner": "<WALLET_A_ADDRESS>"
+}
+
+###
+
+# -------------------------------------------------------------------
+# STEP 4 — Read chain and balances
+# -------------------------------------------------------------------
+
+### Get Full Chain
+GET http://127.0.0.1:5000/api/cryptosim/chain
+
+###
+
+### Get All Balances
+GET http://127.0.0.1:5000/api/cryptosim/balances
+
+###
+
+# -------------------------------------------------------------------
+# STEP 5 — Fraud Analysis (standalone)
+# -------------------------------------------------------------------
+
+### Analyze with manual features
+POST http://127.0.0.1:5000/api/cryptosim/analyze
+Content-Type: application/json
+
+{
+  "amount": 500,
+  "sender_total_sent": 100,
+  "sender_total_received": 20,
+  "frequency": 1
+}
+
+###
+
+### Analyze with real sender stats (replace address)
+POST http://127.0.0.1:5000/api/cryptosim/analyze
+Content-Type: application/json
+
+{
+  "sender": "<WALLET_A_ADDRESS>",
+  "amount": 50
+}
+
+###
+
+# -------------------------------------------------------------------
+# STEP 6 — AI Block Explanation
+# -------------------------------------------------------------------
+
+### Explain Block 0 (genesis)
+GET http://127.0.0.1:5000/api/cryptosim/explain/0
+
+###
+
+### Explain Block 1
+GET http://127.0.0.1:5000/api/cryptosim/explain/1
+
+###
+
+# -------------------------------------------------------------------
+# STEP 7 — Security Report
+# -------------------------------------------------------------------
+
+### Security Report
+GET http://127.0.0.1:5000/api/cryptosim/security_report
+
+###
+
+# -------------------------------------------------------------------
+# LEGACY BLOCKCHAIN (HTML dashboard)
+# -------------------------------------------------------------------
+
+### Get Legacy Chain
+GET http://127.0.0.1:5000/chain
+
+###
+
+### Get Legacy Balances
+GET http://127.0.0.1:5000/balances
+
+###
+
+### Get Transaction History
+GET http://127.0.0.1:5000/transactions
+
+###
