@@ -1,241 +1,406 @@
 # CryptoCurrency Simulation
 
-A portfolio-quality cryptocurrency and blockchain simulation built with **Python**, **Flask**, **ECDSA cryptography**, **Machine Learning**, and **Generative AI**.
+A full-stack cryptocurrency and blockchain simulation developed using **Python**, **Flask**, **ECDSA Cryptography**, **Machine Learning**, and **Generative AI**.
 
-> Designed to demonstrate blockchain fundamentals, REST API design, cryptographic security, ML-based fraud detection, and AI-powered data explanation — all in a single project.
-
----
-
-## Table of Contents
-
-- [Features](#features)
-- [Architecture](#architecture)
-- [Tech Stack](#tech-stack)
-- [Installation](#installation)
-- [Running the Project](#running-the-project)
-- [API Endpoints](#api-endpoints)
-- [Machine Learning — Fraud Detection](#machine-learning--fraud-detection)
-- [Generative AI — Block Explanation](#generative-ai--block-explanation)
-- [Project Structure](#project-structure)
-- [Future Scope](#future-scope)
-- [Screenshots](#screenshots)
+The project demonstrates the complete lifecycle of blockchain transactions—from wallet generation and digital signatures to Proof-of-Work mining, fraud detection using Machine Learning, and AI-powered blockchain explanations.
 
 ---
 
-## Features
+## Live Demo
 
-| Feature | Details |
-|---|---|
-| **Dual Blockchain** | Legacy dict-based chain (dashboard) + CryptoSim ECDSA chain (REST API) |
-| **ECDSA Wallets** | Elliptic Curve keypairs, SHA-256 addresses |
-| **Digital Signatures** | Every transaction is signed and verified |
-| **Proof of Work Mining** | Configurable difficulty, nonce-based hash puzzle |
-| **Blockchain Persistence** | JSON-based chain storage survives server restarts |
-| **ML Fraud Detection** | Isolation Forest trained on real chain data |
-| **AI Block Explanation** | Mock AI engine (OpenAI-ready when API key provided) |
-| **Security Report** | Chain validity, flagged transactions, wallet stats |
-| **REST API** | Full CryptoSim API tested via VS Code REST Client |
-| **Web Dashboard** | Login, signup, send, mine, explorer, history tabs |
+**Application**
+
+https://cryptocurrency-simulation.onrender.com
+
+**GitHub Repository**
+
+https://github.com/saksham0008/CryptoCurrency_Simulation
 
 ---
 
-## Architecture
+# Project Overview
+
+CryptoCurrency Simulation is a portfolio-oriented blockchain application built to demonstrate practical implementation of modern blockchain concepts.
+
+The application includes:
+
+- Secure user authentication
+- Cryptocurrency wallet generation
+- Digitally signed transactions
+- Proof-of-Work blockchain
+- Blockchain explorer
+- Transaction history
+- Wallet balance management
+- Machine Learning based fraud detection
+- AI-powered blockchain explanation
+- REST API for blockchain operations
+
+The project combines blockchain fundamentals with AI and Machine Learning to create a modern cryptocurrency simulation suitable for educational, research, and portfolio purposes.
+
+---
+
+# Features
+
+| Feature | Description |
+|----------|-------------|
+| User Authentication | Login & Signup System |
+| Wallet Generation | ECDSA Wallet Creation |
+| Digital Signatures | Secure Transaction Verification |
+| Proof of Work | Mine New Blocks |
+| Blockchain Explorer | View Blocks & Transactions |
+| Wallet Balances | Real-time Balance Calculation |
+| Transaction History | Complete Transaction Records |
+| Pending Transactions | View Unconfirmed Transactions |
+| Machine Learning | Isolation Forest Fraud Detection |
+| AI Explanation | Natural Language Block Explanation |
+| REST API | Complete Blockchain API |
+| Persistent Storage | JSON-based Blockchain Storage |
+| Live Deployment | Render Cloud Deployment |
+
+---
+
+# Architecture
 
 ```
-┌──────────────────────────────────────────────────┐
-│                    Flask App (app.py)            │
-│                                                  │
-│  ┌─────────────────┐   ┌───────────────────────┐ │
-│  │  Legacy Chain   │   │   CryptoSim Chain     │ │
-│  │  (dashboard)    │   │   (REST API)          │ │
-│  │  blockchain_    │   │   cryptosim_chain.json│ │
-│  │  data.json      │   │                       │ │
-│  └─────────────────┘   └───────────────────────┘ │
-│                                                  │
-│  ┌──────────────┐   ┌─────────────────────────┐  │
-│  │  ML Module   │   │   AI Explainer Module   │  │
-│  │  Isolation   │   │   Mock / OpenAI GPT     │  │
-│  │  Forest      │   │                         │  │
-│  └──────────────┘   └─────────────────────────┘  │
-└──────────────────────────────────────────────────┘
+                        Flask Application
 
-blockchain/
-  wallet.py       ← ECDSA key generation, signing
-  transaction.py  ← TX creation, signature verification
-  block.py        ← Block structure, SHA-256 hash
-  blockchain.py   ← Chain management, PoW, validation
+                    +----------------------+
+                    |      app.py          |
+                    +----------------------+
 
-ai/
-  fraud_detection.py  ← Isolation Forest, real sender stats
-  explainer.py        ← Mock + OpenAI block explainer
+                               │
+
+       ┌───────────────────────┼────────────────────────┐
+
+       │                       │                        │
+
+ Authentication         Blockchain Engine         REST API
+
+       │                       │                        │
+
+ Login / Signup        ECDSA Transactions      JSON Responses
+
+       │                       │
+
+       │               Proof of Work
+
+       │                       │
+
+       │               Blockchain Explorer
+
+       │                       │
+
+       ├───────────────┬───────────────┐
+
+       │               │               │
+
+ Machine Learning   AI Explainer   JSON Storage
 ```
 
 ---
 
-## Tech Stack
+# Technology Stack
 
-- **Backend**: Python 3, Flask
-- **Cryptography**: ECDSA (secp256k1), SHA-256
-- **Machine Learning**: scikit-learn (Isolation Forest)
-- **AI Explanation**: OpenAI SDK v1+ (mock fallback included)
-- **Persistence**: JSON files
-- **Frontend**: HTML, CSS, JavaScript (Toastify, QRCode.js)
-- **Testing**: VS Code REST Client (`test.http`)
+## Backend
+
+- Python
+- Flask
+
+## Frontend
+
+- HTML5
+- CSS3
+- JavaScript
+
+## Cryptography
+
+- ECDSA
+- SHA-256
+
+## Machine Learning
+
+- Scikit-Learn
+- Isolation Forest
+
+## Artificial Intelligence
+
+- OpenAI SDK
+- Mock AI Engine
+
+## Storage
+
+- JSON
+
+## Deployment
+
+- Render
+
+## Version Control
+
+- Git
+- GitHub
 
 ---
 
-## Installation
+# Screenshots
+
+## Login Page
+
+![Login](screenshots/login.png)
+
+---
+
+## Dashboard
+
+![Dashboard](screenshots/dashboard.png)
+
+---
+
+## Wallet Generation
+
+![Wallet](screenshots/create-wallet.png)
+
+---
+
+## Send Cryptocurrency
+
+![Send](screenshots/send-transaction.png)
+
+---
+
+## Mine Block
+
+![Mining](screenshots/mine-block.png)
+
+---
+
+## Wallet Balances
+
+![Balances](screenshots/balances.png)
+
+---
+
+## Blockchain Explorer
+
+![Explorer](screenshots/explorer.png)
+
+---
+
+## Block Details
+
+![Block Details](screenshots/block-details.png)
+
+---
+
+## Transaction History
+
+![History](screenshots/transaction-history.png)
+
+---
+
+## Pending Transactions
+
+![Pending](screenshots/pending-transactions.png)
+
+---
+
+# Installation
+
+Clone the repository
 
 ```bash
-# 1. Clone the repository
-git clone https://github.com/your-username/cryptocurrency-simulation.git
-cd "CryptoCurrency Simulation"
+git clone https://github.com/saksham0008/CryptoCurrency_Simulation.git
+```
 
-# 2. Create a virtual environment
+Move inside the project
+
+```bash
+cd "CryptoCurrency Simulation"
+```
+
+Create a virtual environment
+
+```bash
 python -m venv venv
-venv\Scripts\activate        # Windows
-# source venv/bin/activate   # macOS / Linux
-
-# 3. Install dependencies
-pip install flask werkzeug ecdsa scikit-learn numpy openai
 ```
 
-### Optional — Enable Real OpenAI Explanations
+Windows
 
 ```bash
-# Set your OpenAI API key as an environment variable
-set OPENAI_API_KEY=sk-...       # Windows CMD
-# export OPENAI_API_KEY=sk-...  # macOS / Linux
+venv\Scripts\activate
 ```
 
-If the key is not set, the project uses a built-in mock explainer automatically.
+Linux / macOS
+
+```bash
+source venv/bin/activate
+```
+
+Install dependencies
+
+```bash
+pip install -r requirements.txt
+```
 
 ---
 
-## Running the Project
+# Running the Application
 
 ```bash
-cd "CryptoCurrency Simulation"
 python app.py
 ```
 
-Open your browser at **http://127.0.0.1:5000**
+Open
+
+```
+http://127.0.0.1:5000
+```
 
 ---
 
-## API Endpoints
+# REST API
 
-### CryptoSim API
+## Authentication
 
-| Method | Endpoint | Description |
-|--------|----------|-------------|
-| POST | `/api/cryptosim/create_wallet` | Generate a new ECDSA wallet |
-| POST | `/api/cryptosim/send_transaction` | Sign and submit a transaction |
-| POST | `/api/cryptosim/mine` | Mine pending transactions |
-| GET  | `/api/cryptosim/chain` | Retrieve the full blockchain |
-| GET  | `/api/cryptosim/balances` | Get all wallet balances |
-| POST | `/api/cryptosim/analyze` | Fraud analysis on a transaction |
-| GET  | `/api/cryptosim/explain/<index>` | AI explanation of a block |
-| GET  | `/api/cryptosim/security_report` | Full chain security audit |
-
-### Legacy API (Web Dashboard)
-
-| Method | Endpoint | Description |
-|--------|----------|-------------|
-| POST | `/login` | User login |
-| POST | `/signup` | User registration |
-| GET  | `/logout` | Logout |
-| POST | `/send` | Send coins |
-| POST | `/mine` | Mine a block |
-| GET  | `/chain` | Get chain |
-| GET  | `/balances` | Get balances |
-| GET  | `/transactions` | Transaction history |
+| Method | Endpoint |
+|----------|-----------|
+| POST | /login |
+| POST | /signup |
+| GET | /logout |
 
 ---
 
-## Machine Learning — Fraud Detection
+## Blockchain
 
-The `FraudDetector` class uses **Isolation Forest** (an unsupervised anomaly detection algorithm) to score transactions.
-
-### Features used
-
-| Feature | Source |
-|---------|--------|
-| `amount` | Transaction amount |
-| `sender_total_sent` | Computed from confirmed chain history |
-| `sender_total_received` | Computed from confirmed chain history |
-| `frequency` | Number of prior sends from this address |
-
-### Workflow
-
-1. On startup, the model is trained on all confirmed chain transactions.
-2. Before each new transaction is accepted, the sender's real stats are fetched from the chain.
-3. A risk score is computed. Negative scores are flagged as suspicious and rejected.
-4. The model retrains after each new transaction and each new mined block.
+| Method | Endpoint |
+|----------|-----------|
+| POST | /send |
+| POST | /mine |
+| GET | /chain |
+| GET | /balances |
+| GET | /transactions |
 
 ---
 
-## Generative AI — Block Explanation
+## CryptoSim APIs
 
-The `explain_block()` function in `ai/explainer.py`:
-
-- **With `OPENAI_API_KEY` set**: Uses OpenAI `gpt-4o-mini` to explain the block in natural language.
-- **Without API key**: Falls back to a deterministic mock engine that produces structured explanations covering transactions, mining rewards, fraud flags, and signature verification.
+| Method | Endpoint |
+|----------|-----------|
+| POST | /api/cryptosim/create_wallet |
+| POST | /api/cryptosim/send_transaction |
+| POST | /api/cryptosim/mine |
+| GET | /api/cryptosim/chain |
+| GET | /api/cryptosim/balances |
+| POST | /api/cryptosim/analyze |
+| GET | /api/cryptosim/explain/<block_index> |
+| GET | /api/cryptosim/security_report |
 
 ---
 
-## Project Structure
+# Machine Learning Fraud Detection
+
+The project integrates an **Isolation Forest** model to detect suspicious cryptocurrency transactions before they are added to the blockchain.
+
+The model evaluates:
+
+- Transaction Amount
+- Sender Transaction Frequency
+- Total Amount Sent
+- Total Amount Received
+
+Potentially suspicious transactions are identified using anomaly detection techniques.
+
+---
+
+# AI Block Explanation
+
+The project includes an AI module capable of explaining blockchain blocks in natural language.
+
+Two modes are supported:
+
+- Mock AI Engine (default)
+- OpenAI GPT Integration (via `OPENAI_API_KEY`)
+
+This feature converts technical blockchain data into easy-to-understand explanations.
+
+---
+
+# Project Structure
 
 ```
 CryptoCurrency Simulation/
-│
-├── app.py                      # Flask application, all routes
-│
+
+├── app.py
+
 ├── blockchain/
-│   ├── block.py                # Block class with PoW hashing
-│   ├── blockchain.py           # Chain class with full validation
-│   ├── transaction.py          # ECDSA-signed transaction
-│   └── wallet.py               # ECDSA wallet, signing
-│
+│   ├── block.py
+│   ├── blockchain.py
+│   ├── transaction.py
+│   ├── wallet.py
+│   └── __init__.py
+
 ├── ai/
-│   ├── fraud_detection.py      # Isolation Forest fraud detector
-│   └── explainer.py            # Mock + OpenAI block explainer
-│
+│   ├── fraud_detection.py
+│   └── explainer.py
+
 ├── templates/
-│   └── index.html              # Web dashboard
-│
+│   └── index.html
+
 ├── static/
 │   ├── style.css
 │   └── script.js
-│
-├── blockchain_data.json        # Legacy chain persistence
-├── cryptosim_chain.json        # CryptoSim chain persistence
-├── users.json                  # Registered users
-├── test.http                   # REST Client test file
+
+├── blockchain_data.json
+├── cryptosim_chain.json
+├── users.json
+├── requirements.txt
+├── Procfile
+├── test.http
 └── README.md
 ```
 
 ---
 
-## Future Scope
+# Deployment
 
-- [ ] P2P networking — multiple nodes with consensus
-- [ ] Merkle tree for transaction hashing
-- [ ] Wallet import/export via private key
-- [ ] Real-time dashboard with WebSockets
-- [ ] Smart contract simulation layer
-- [ ] Replace JSON persistence with SQLite
-- [ ] Docker containerization
-- [ ] Full ML training pipeline with labelled fraud dataset
+The application is deployed using **Render**.
+
+Live URL:
+
+https://cryptocurrency-simulation.onrender.com
 
 ---
 
-## Screenshots
+# Future Enhancements
 
-> _Add screenshots of the dashboard, REST API responses, and security report here._
+- Peer-to-Peer Blockchain Network
+- Merkle Tree Implementation
+- Smart Contract Simulation
+- Docker Support
+- SQLite / PostgreSQL Integration
+- WebSocket Based Live Updates
+- Advanced Machine Learning Models
+- Wallet Import & Export
+- Multi-node Consensus
 
 ---
 
-## Author
+# Author
 
-Built as a portfolio project demonstrating blockchain, cryptography, REST APIs, machine learning, and generative AI in Python.
+**Saksham Gupta**
+
+B.Tech – Cyber Security
+
+GitHub
+
+https://github.com/saksham0008
+
+LinkedIn
+
+https://www.linkedin.com/in/saksham-gupta0008/
+
+---
+
+# License
+
+This project is developed for educational, research, and portfolio purposes.
